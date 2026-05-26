@@ -1,34 +1,52 @@
 package com.base.models;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 @Entity
 public class FoodOrder {
-	@Id
-	@GeneratedValue
-	private long id;
-	private double totalamount;
-	private String status;
-	private String PaymentStatus;
-	private LocalDateTime createdAt;
-	private LocalDateTime updatedAt;
-	
-	@ManyToOne
-	@JoinColumn(name="user_id")
-	private User user;
-	
-	@OneToMany(mappedBy = "order")
-	private List<OderItem> items;
-	
-	
-	
 
+    @Id
+    @GeneratedValue
+    private long id;
+
+    private String status;
+    private double totalamount;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    // ✅ getters & setters
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public double getTotalamount() {
+        return totalamount;
+    }
+
+    public void setTotalamount(double totalamount) {
+        this.totalamount = totalamount;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
